@@ -1,5 +1,5 @@
 # ionic-weather
-ionic-weather test application
+ionic-weather test application using angularjs and ionic mobile framework
 
 ## Installation
 
