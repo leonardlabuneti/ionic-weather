@@ -3,6 +3,8 @@ ionic-weather test application using angularjs and ionic mobile framework
 
 ## Installation
 
+    clone this repo
+    cd ionic-weather
     sudo npm install -g cordova ionic gulp-cli bower
     npm install
     bower install
