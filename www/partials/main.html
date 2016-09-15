@@ -1,0 +1,94 @@
+ <ion-pane class="weather-background" ng-style="{'background-image':'url('+backgroundImg+')'}">
+        <ion-header-bar class="bar bar-header bar-energized">
+          	<button class="button button-icon ion-compose" ng-click="modal.show()"></button>
+          	<h1 class="title">Weather</h1>
+          	
+			  		<div class="switch white">
+						<input type="radio" name="switch" value="imperial" ng-model="units" id="switch-off" ng-change="switchUnits(value)">
+						<input type="radio" name="switch" value="metric" ng-model="units" id="switch-on" checked ">
+						<label for="switch-off">&#8457;</label>
+						<label for="switch-on">&#8451;</label>
+						<span class="toggle"></span>
+					</div> <!-- end switch -->
+
+        </ion-header-bar>
+        <ion-content>
+        	
+        	<ion-spinner class="loader" icon="android" ng-show="loading"></ion-spinner>
+        	
+        	<ion-list>
+			  <ion-item ng-repeat="location in locations track by $index"  ng-class="{'row-selected': location.selected}">
+			  		<div class="row weather-row" ng-click="selectedLocation($index)" >
+					  <div class="col col-9 margin-top">
+					  	<i ng-if="location.currentLocation" class="icon ion-navigate larger"></i>
+					  </div>
+					  <div class="col col-75">
+					  	<div class="row">
+					  		<h1 class="title">{{location.name}}</h1>
+					  	</div>
+					  	<div class="row">	
+					  		<div class="col">
+					  			{{location.weather[0].description}}
+					  		</div>
+					  	</div>
+					  </div>
+					  <div class="col">
+					  	<div class="row">
+					  		<div class="col">
+					  			<h1>{{units == 'metric' ? location.main.temp : location.main.temp * 9/5 + 32 | number:2}} {{units == 'metric' ? '&#8451;' : '&#8457;'}}</h1>
+					  		</div>
+					  		<div class="col">
+					  			<div class="row">
+					  			Min: {{units == 'metric' ? location.main.temp_min : location.main.temp_min * 9/5 + 32 | number:2}} {{units == 'metric' ? '&#8451;' : '&#8457;'}}
+					  			</div>
+					  			<div class="row">
+					  			Max: {{units == 'metric' ? location.main.temp_max : location.main.temp_max * 9/5 + 32 | number:2}} {{units == 'metric' ? '&#8451;' : '&#8457;'}}
+					  			</div>
+					  			<div class="row">
+					  				<div class="col col-10">
+					  			<button class="button button-energized" ng-click="getForecast($index)">5 days</button>
+					  				</div>
+					  			</div>
+					  		</div>
+					  	</div>
+					  	
+					  </div>
+					</div>
+					<div class="row weather-row forecast-row" ng-show="location.forecastVisible">
+						<h2>5 days forecast</h2>
+						<ion-item ng-repeat="fore in location.forecast">
+							<div class="row strong">
+								{{fore.date}} - {{units == 'metric' ? fore.temp : fore.temp * 9/5 + 32 | number:2}} {{units == 'metric' ? '&#8451;' : '&#8457;'}}
+							</div>
+						</ion-item> 
+					</div>
+
+          			
+			  </ion-item>
+			</ion-list>	
+        </ion-content>
+</ion-pane>
+
+
+<script id="templates/modal.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-energized">
+      <h1 class="title">Add location</h1>
+      <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <div class="list">
+        <label class="item item-input">
+              <span class="input-label">City</span>
+              <input ng-model="newLocation.city" type="text">
+            </label>
+        <label class="item item-input">
+              <span class="input-label">Country</span>
+              <input ng-model="newLocation.country" type="text">
+            </label>
+        
+        <button class="button button-full button-energized" ng-click="addCity(newLocation)">Add</button>
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
