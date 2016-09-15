@@ -14,7 +14,7 @@ ionic-weather test application using angularjs and ionic mobile framework
 
 ## Running in browser
 
-    ionic serve
+    ionic serve  --address localhost --port 8101
 
 ## Running on mobile ios emulator
 
