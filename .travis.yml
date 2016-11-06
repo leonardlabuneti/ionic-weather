@@ -9,5 +9,6 @@ before_script:
   - npm install -g gulp cordova ionic gulp-cli bower phantomjs
 install:
   - npm install
+  - bower install
 script: 
   - gulp test
