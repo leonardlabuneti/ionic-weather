@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/leonardlabuneti/ionic-weather.svg?branch=master)](https://travis-ci.org/leonardlabuneti/ionic-weather)
+
+
 # ionic-weather
 ionic-weather test application using angularjs and ionic mobile framework
 
