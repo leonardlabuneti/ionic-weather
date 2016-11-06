@@ -255,7 +255,13 @@ function ResourceController($q, $scope,
     }
       
     //try to get the browser location      
-    $scope.getLocation($q, $scope).then(function(location){
+    var promise = $scope.getLocation($q, $scope);
+    if (typeof promise == 'undefined'){
+      console.log('googleapi - Cannot access location');
+      return;
+    }
+    
+    promise.then(function(location){
         
         console.log('Adding default location :',location);
         if (location.city) {

@@ -58,7 +58,7 @@ gulp.task('git-check', function(done) {
 gulp.task('test', function (done) {
     var server =  new Server({
         configFile: __dirname + '/karma.conf.js',
-        singleRun: false
+        singleRun: true
     });
 
     server.on('browser_error', function (browser, err){
@@ -68,7 +68,7 @@ gulp.task('test', function (done) {
 
     server.on('run_complete', function (browsers, results){
         if (results.failed) {
-            throw new Error('Karma: Tests Failed');
+            throw new Error('Karma: Tests Failed ');
         }
         gutil.log('Karma Run Complete: No Failures');
         done();

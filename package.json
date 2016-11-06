@@ -34,8 +34,9 @@
       "platform": "ios",
       "version": "",
       "locator": "ios"
-  }],
-  "scripts": {
-      "test": "gulp test"
     }
+  ],
+  "scripts": {
+    "test": "gulp test"
+  }
 }

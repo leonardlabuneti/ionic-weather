@@ -6,7 +6,7 @@ dist: trusty
 before_install:
 - export DISPLAY=:99.0
 before_script:
-  - npm install -g gulp cordova ionic gulp-cli bower
+  - npm install -g gulp cordova ionic gulp-cli bower phantomjs
 install:
   - npm install
 script: 
